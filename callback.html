@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AIditing — TikTok Authorization</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main style="max-width:600px;margin:80px auto;text-align:center;font-family:system-ui,sans-serif;">
+    <h1>Authorization complete</h1>
+    <p>TikTok authorization was received. You can close this window — AIditing will finish connecting your account.</p>
+    <p id="status" style="color:#666;font-size:0.9em;"></p>
+  </main>
+  <script>
+    const p = new URLSearchParams(window.location.search);
+    const code = p.get('code');
+    document.getElementById('status').textContent = code
+      ? 'Authorization code received.'
+      : (p.get('error') ? 'Error: ' + p.get('error_description') : '');
+  </script>
+</body>
+</html>
